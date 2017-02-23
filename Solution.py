@@ -27,6 +27,10 @@ for cache in range(0, Caches):
         weight = sum // video_size
         cache_video_weight[cache].append((curr_video, weight))
 
+    # sort tuples by weight
+    # cache_video_weight[cache].sort(key = lambda tup: tup[1])
+    cache_video_weight[cache] = sorted(cache_video_weight[cache], key=lambda x: -x[1])
+    bla = 0
 
 
 
@@ -34,4 +38,4 @@ for cache in range(0, Caches):
 bla = 0
 
 def VideoToCache (cache_video_value):
-    
+    bla = 0
