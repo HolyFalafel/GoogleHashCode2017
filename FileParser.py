@@ -36,12 +36,13 @@ def parse_file(filename):
             list_index += 1
             # bla = 0
 
-            cache_dict.setdefault(cache_num, []).append((endpoint_num, cache_latency))
+            cache_dict.setdefault(req_cache, []).append((endpoint_num, cache_latency))
         endpoint_dict[endpoint_num] = (int(endpoint_latency), tuple(endpoint_caches))
 
     ################# reading requests
     video_request_dict = {}  # key: video, value: (endpoint, request)
     endpoint_request_dict = {}  # key: endpoint, value: (video, request)
+    endpoint_video_request_dict = {}
 
     endpoint_videos = {}
 
@@ -56,9 +57,11 @@ def parse_file(filename):
         video_request_dict.setdefault(req_video, []).append((req_endpoint, num_of_requests))
         endpoint_request_dict.setdefault(req_endpoint, []).append((req_video, num_of_requests))
 
+        endpoint_video_request_dict[(req_video, req_endpoint)] = num_of_requests
+
         endpoint_videos.setdefault(req_endpoint, []).append(req_video)
 
-    return int(Videos), Endpoints, int(Request_Descriptions), int(Caches), int(Max_Cache_Size), video_sizes, endpoint_dict, video_request_dict, endpoint_request_dict, cache_dict, endpoint_videos
+    return int(Videos), Endpoints, int(Request_Descriptions), int(Caches), int(Max_Cache_Size), video_sizes, endpoint_dict, video_request_dict, endpoint_request_dict, cache_dict, endpoint_videos, endpoint_video_request_dict
 
 
 # Videos, Endpoints, Request_Descriptions, Caches, Max_Cache_Size, video_sizes, endpoint_dict, video_request_dict, endpoint_request_dict = parse_file('me_at_the_zoo.in')
