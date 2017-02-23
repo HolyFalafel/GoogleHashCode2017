@@ -27,3 +27,6 @@ for cache in (0, Caches):
 
 
 bla = 0
+
+def VideoToCache (cache_video_value):
+    
