@@ -1,7 +1,7 @@
 import FileParser, FileWriter
 
 Videos, Endpoints, Request_Descriptions, Caches, Max_Cache_Size, video_sizes, endpoint_dict, video_request_dict, endpoint_request_dict, cache_dict, endpoint_videos, endpoint_video_request_dict = \
-    FileParser.parse_file('me_at_the_zoo.in')
+    FileParser.parse_file('kittens.in')
 
 cache_video_shibutz = {}
 
@@ -43,6 +43,7 @@ for cache in range(0, Caches):
             cache_video_shibutz[cache].append(video)
             total_size_in_cache += size
 
+FileWriter.write_to_file("sdfdsf.out", Caches, cache_video_shibutz)
 dfsdf = 0
 bla = 0
 
