@@ -3,6 +3,8 @@ import FileParser, FileWriter
 Videos, Endpoints, Request_Descriptions, Caches, Max_Cache_Size, video_sizes, endpoint_dict, video_request_dict, endpoint_request_dict, cache_dict, endpoint_videos, endpoint_video_request_dict = \
     FileParser.parse_file('me_at_the_zoo.in')
 
+cache_video_shibutz = {}
+
 cache_video_weight = {}
 for cache in range(0, Caches):
     cache_video_weight[cache] = []
@@ -32,9 +34,16 @@ for cache in range(0, Caches):
     cache_video_weight[cache] = sorted(cache_video_weight[cache], key=lambda x: -x[1])
     bla = 0
 
+    cache_video_shibutz[cache] = []
+    total_size_in_cache = 0
 
+    for video, weight in cache_video_weight[cache]:
+        size = int(video_sizes[video])
+        if total_size_in_cache + size <= Max_Cache_Size:
+            cache_video_shibutz[cache].append(video)
+            total_size_in_cache += size
 
-
+dfsdf = 0
 bla = 0
 
 def VideoToCache (cache_video_value):
